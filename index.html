@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>All Conditions</title>
+	<meta charset="utf-8" />
+	<link rel="stylesheet" href="reset.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+ 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+	<style>
+		.box{
+			width: 300px;
+			background-color: #cceeff;
+			text-align: center;
+			outline: none;
+		}
+		.heading{
+			text-shadow: 2px 2px 5px red;
+		}
+		.gm{
+			color: white;
+  			text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+		}
+		.ela{
+			text-shadow: 0 0 3px #FF0000;
+		}
+		.nila{
+			text-shadow: 0 0 3px #FF0000, 0 0 5px #0000FF;
+		}
+		.rev{
+			height: 120px;
+			overflow: scroll;
+			overflow-x: hidden;
+		}
+	</style>
+</head>
+<body>
+	<div class="container-fluid bg-light">
+	<div class="container text-center bg-info">
+  		<h2 class="heading"><u>Using If Condition</u></h2><br>
+  		<form>
+    		<div class="form-group">
+      			<label for="name"><b>Name:</b></label><br>
+      			<input type="text" id="name" placeholder="Enter name" name="name" class="box">
+    		</div>
+    		<div class="form-group">
+      			<label for="pwd"><b>Password:</b></label><br>
+      			<input type="password" id="pwd" placeholder="Enter password" name="pswd" required class="box">
+    		</div>
+    		<div class="form-group">
+      			<label for="pwd"><b>Confirm Password:</b></label><br>
+      			<input type="password" id="repwd" placeholder="Enter confirm password" name="repswd" required class="box">
+    		</div>
+    		<button type="submit" class="btn btn-success mb-4" onclick="myFunction()">Submit</button>
+  		</form>
+	</div><hr>
+	<div class="container text-center bg-secondary">
+		<h2 class="gm"><u>Using Switch Case</u></h2><br>
+		<button type="submit" class="btn btn-success mb-4" onclick="getFunction()">Switch</button>
+		<p id="demo" class="mb-5"></p>
+	</div><hr>
+	<div class="container text-center bg-warning"><br>
+		<h2 class="nila"><u>Using For Loop</u></h2><br>
+		<form>
+			<div>
+      			<label><b>First Number:</b></label><br>
+      			<input type="number" id="fno" placeholder="Enter first number" class="box">
+    		</div>
+    		<div>
+      			<label><b>Last Number:</b></label><br>
+      			<input type="number" id="lno" placeholder="Enter last number" class="box">
+    		</div><br>
+    		<button type="button" class="btn btn-success" onclick="myNumber()">Submit</button>
+    		<p id="loop" class="rev"></p>
+		</form>
+	</div><hr>
+	<div class="container text-center bg-primary"><br>
+		<h2 class="ela"><u>Using While Loop</u></h2><br>
+		<form>
+			<div>
+      			<label><b>First Number:</b></label><br>
+      			<input type="number" id="fnum" placeholder="Enter first number" class="box">
+    		</div>
+    		<div>
+      			<label><b>Last Number:</b></label><br>
+      			<input type="number" id="lnum" placeholder="Enter last number" class="box">
+    		</div><br>
+    		<button type="button" class="btn btn-success" onclick="getNumber()">Submit</button>
+    		<p id="exp" class="rev"></p>
+		</form>
+	</div><hr>
+</div>
+</body>
+<script>
+	function myFunction() {
+		var password = document.getElementById('pwd').value;
+		var confirmpassword = document.getElementById('repwd').value;
+		
+		if(password==confirmpassword){
+			alert('Login Successfully')
+		}
+		else{
+			alert('Login failure')
+		}
+	} 
+	function getFunction() {
+		var day;
+		switch (new Date().getDay()) {
+		  case 0:
+		    day = "Sunday";
+		    break;
+		  case 1:
+		    day = "Monday";
+		    break;
+		  case 2:
+		    day = "Tuesday";
+		    break;
+		  case 3:
+		    day = "Wednesday";
+		    break;
+		  case 4:
+		    day = "Thursday";
+		    break;
+		  case 5:
+		    day = "Friday";
+		    break;
+		  case  6:
+		    day = "Saturday";
+		}
+		document.getElementById("demo").innerHTML = "Today is " + day;
+	}
+	function myNumber(){
+		var fnumber = document.getElementById('fno').value;
+		var lnumber = document.getElementById('lno').value;
+		var text = "";
+		var reverse = "";
+		fnumber=parseInt(fnumber);
+		var i;
+
+		if(fnumber<lnumber){
+			for (i= fnumber+1; i< lnumber; i++){			
+				text += "" +i+ "<br>";
+				console.log(text) 
+			}
+			document.getElementById("loop").innerHTML = text;
+		}
+		else if(fnumber>lnumber){
+			for(i= fnumber-1; i> lnumber; i--){
+				reverse += "" +i+ "<br>";
+				console.log(reverse) 
+			}
+			document.getElementById("loop").innerHTML = reverse;
+		}
+	}
+
+	function getNumber(){
+		var firstnumber = document.getElementById('fnum').value;
+		var lastnumber = document.getElementById('lnum').value;
+		var text = "";
+		firstnumber=parseInt(firstnumber);
+
+		var i = firstnumber+ 1;
+		
+		while(i<lastnumber) {
+			text += i+ "<br>";
+			i++;
+
+			console.log(text) 
+
+		}
+		document.getElementById("exp").innerHTML = text;
+	}
+</script>
+</html>
